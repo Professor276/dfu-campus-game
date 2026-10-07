@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DFU Campus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="dfu-game">
+
+    <button id="mute" class="mute" type="button" aria-pressed="false">Sound: on</button>
+
+    <!-- 1. Enter the Campus (the hidden Easter egg) -->
+    <section id="screen-entrance" class="screen active">
+      <button id="scene-btn" class="scene-btn" type="button" aria-label="Wake the sleeping worker and start the game">
+        <div id="entrance-art"></div>
+      </button>
+      <p id="cue" class="cue"></p>
+      <p id="best" class="small"></p>
+      <button id="reset-btn" class="link" type="button">Reset progress</button>
+    </section>
+
+    <!-- 2. Dialogue (character picture + speech box) -->
+    <section id="screen-dialogue" class="screen">
+      <div id="dscene" class="dscene"></div>
+      <div id="alert" class="alert" role="alert" hidden></div>
+      <div class="stage-char"><div id="char" class="char"></div></div>
+      <div class="dialogue-box">
+        <div id="speaker" class="speaker"></div>
+        <p id="caption" class="caption" hidden></p>
+        <p id="dtext"></p>
+        <div id="choices" class="choices"></div>
+      </div>
+    </section>
+
+    <!-- 3. The game -->
+    <section id="screen-game" class="screen">
+      <header class="hud">
+        <div id="hud-stage" class="hud-stage"></div>
+        <div class="hud-clock"><span id="clock-label">Boss returns in</span> <b id="clock">1:30</b></div>
+        <div class="hud-score"><span class="small">Score</span> <b id="hud-score">0</b></div>
+      </header>
+      <div id="stage" class="stage-area"></div>
+      <div id="prompt" class="prompt"></div>
+      <div id="actions" class="choices"></div>
+      <div id="feedback" class="feedback" role="status" hidden>
+        <b id="fb-title"></b>
+        <p id="fb-text"></p>
+        <button id="fb-next" type="button">Continue</button>
+      </div>
+    </section>
+
+    <!-- 4. Results -->
+    <section id="screen-results" class="screen">
+      <h2>CONSTRUCTION COMPLETE!</h2>
+      <div id="r-score" class="big"></div>
+      <p id="r-rank" class="rank"></p>
+      <ul id="r-stats" class="stats"></ul>
+      <details class="breakdown"><summary>Score breakdown</summary><ul id="r-lines"></ul></details>
+      <div id="r-progress" class="progress"></div>
+      <div id="r-teaser" class="teaser"></div>
+      <div id="r-ach" class="ach-list"></div>
+      <div class="choices">
+        <button id="r-replay" type="button">Play again</button>
+        <button id="r-home" type="button" class="secondary">Back to the entrance</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Order matters: config, art, engine, each month, then start -->
+  <script src="config.js"></script>
+  <script src="art.js"></script>
+  <script src="engine.js"></script>
+  <script src="months/month01.js"></script>
+  <!-- To add Month 2: create months/month02.js and add one line here. -->
+  <script>DFU.start();</script>
+</body>
+</html>
